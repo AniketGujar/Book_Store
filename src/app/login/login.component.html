@@ -1,0 +1,41 @@
+<div class="center">
+    <div class="center container d-flex flex-row justify-content-center">
+        <div class="card image" style="width: 22rem;height: 22rem; border-radius: 21px 0px 0px 21px;">
+            <img src="../../assets/images/2766594-removebg-preview (1).png" class="card-img-top img">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">ONLINE BOOK SHOPPING</h5>
+            </div>
+        </div>
+        <div class="card" style="width: 27rem;height: 30rem; padding-top: 30px;border-radius: 6px;">
+            <form>
+                <div class="row justify-content-center">
+                    <h2 class="px-4" (click)="login()">LOGIN</h2>
+                    <h2 class="px-4" (click)="signUp()">SIGNUP</h2>
+                </div>
+                <div *ngIf="flag">
+                    <div class="form-group px-4">
+                        <label for="exampleInputEmail1">Email Id</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group px-4">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="px-4">
+                        <button type="button" class="btn btn-danger login" style="width: 100%;"> Login</button>
+                    </div>
+                    <div class="separator px-4">OR</div>
+                    <div class=" px-4">
+                        <button type="button" class="btn btn-danger facebook">Facebook</button>
+                        <button type="button" class="btn btn-danger google">Google</button>
+                    </div>
+                </div>
+                <div *ngIf="!flag">
+                    <app-register></app-register>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
