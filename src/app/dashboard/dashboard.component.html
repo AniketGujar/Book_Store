@@ -1,18 +1,30 @@
-<nav class="navbar navBar d-flex flex-row">
-  <div class="container">
-    <div class="row col-3">
+<nav class="navbar navbar-expand navBar">
+  <div class="container-fluid align-items-center justify-content-around">
+    <div class="col-md-2 d-flex book">
       <img src="../../assets/images/education.svg">
-      <h2 class="px-4">Bookstore</h2>
+      <a class="navbar-brand" href="dashboard">Bookstore</a>
     </div>
-    <div class="form-group has-search col-6">
+    <div class="form-group has-search col-md-4 search">
       <span class="fa fa-search form-control-feedback"></span>
       <input type="text" class="form-control" placeholder="Search">
     </div>
-    <div class="col-1">
-      <i class="fa fa-user"></i>
-    </div>
-    <div  class="col-1">  
-      <i class="fa fa-shopping-cart"></i>
+    <div class="d-flex justify-content-between">
+      <div class="col-1">
+        <i class="fa fa-user prof"></i>
+        <label>Profile</label>
+      </div>
+      <div class="col-1">
+        <i class="fa fa-shopping-cart cart"></i>
+        <label>Cart</label>
+      </div>
     </div>
   </div>
 </nav>
+
+<router-outlet></router-outlet>
+
+<div class="card footer col-12">
+  <div class="card-header">
+    Copyright &#169; 2021, Bookstore Private Limited. All Rights Reserved
+  </div>
+</div>

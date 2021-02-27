@@ -1,0 +1,37 @@
+<div class="row top justify-content-around">
+    <div class="col-3">
+        <h3 style="float: right;">Books</h3>
+    </div>
+    <div class="col-7">
+        <div ngbDropdown class="d-inline-block" style="float: right;">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by relevance</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>Price</button>
+                <button ngbDropdownItem>A-Z</button>
+                <button ngbDropdownItem>Z-A</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex flex-wrap justify-content-around">
+    <div class="card m-4" style="width: 15rem;" *ngFor="let image of images">
+        <img [src]="image" class="card-img-top image">
+        <div class="card-body" style="background-color: white;">
+            <h5>Don't Make Me Think</h5>
+            <h6>By Steve krug</h6>
+            <div class="row px-3">
+                <div class="rating">4.5 &#9733;</div>
+                <div>(20)</div>
+            </div>
+            <div class="row px-3">
+                <div>Rs.1500</div>
+                <div class="px-3"><s>Rs.2000</s></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row col-12 justify-content-center">
+    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination" class="page"></ngb-pagination>
+</div>

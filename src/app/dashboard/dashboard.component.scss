@@ -4,6 +4,10 @@
     height: 60px;
 }
 
+.navbar-brand{
+    color: #FFFFFF;
+}
+
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -20,8 +24,50 @@
     color: #aaa;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:356px) {
     .form-group{
         visibility: hidden;
     }
+}
+
+@media screen and (max-width:400px) {
+    .book{
+        padding: 0px;
+    }
+    .search {
+        padding-left: 0px;
+    }
+    .col-1 {
+        padding-left: 0px;
+    }
+}
+
+.book {
+    width: auto;
+    padding-right: 0px;
+}
+
+.search{
+    padding-bottom: 0px;
+}
+
+.form-group {   
+    margin-bottom: 0rem;
+}
+
+.prof{
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.cart{
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+.footer{
+    background-color: #2E1D1E;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
 }
