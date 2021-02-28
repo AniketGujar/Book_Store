@@ -2,7 +2,7 @@
   <div class="container-fluid align-items-center justify-content-around">
     <div class="col-md-2 d-flex book">
       <img src="../../assets/images/education.svg">
-      <a class="navbar-brand" href="dashboard">Bookstore</a>
+      <a class="navbar-brand" routerLink="/dashboard/home">Bookstore</a>
     </div>
     <div class="form-group has-search col-md-4 search">
       <span class="fa fa-search form-control-feedback"></span>
@@ -10,12 +10,12 @@
     </div>
     <div class="d-flex justify-content-between">
       <div class="col-1">
-        <i class="fa fa-user prof"></i>
-        <label>Profile</label>
+        <i class="fa fa-user prof" routerLink=""></i>
+        <label routerLink="">Profile</label>
       </div>
       <div class="col-1">
-        <i class="fa fa-shopping-cart cart"></i>
-        <label>Cart</label>
+        <i class="fa fa-shopping-cart cart" routerLink="/dashboard/cart"></i>
+        <label routerLink="/dashboard/cart">Cart</label>
       </div>
     </div>
   </div>

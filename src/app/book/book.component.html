@@ -1,0 +1,66 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard/home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Book</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="container col-12 col-md-2 justify-content-end">
+        <div class="card m-4" style="width: 16rem;">
+            <img src="../../assets/images/Image 11@2x.png" class="card-img-top image">
+        </div>
+        <div class="row d-flex card-body ml-2" style="width: 20rem;">
+            <button type="button" class="btn add mr-2">ADD TO BAG</button>
+            <button type="button" class="btn wish ml-2">&hearts; WISHLIST</button>
+        </div>
+    </div>
+    <div class="container col-12 col-md-7 justify-content-start">
+        <div class="card-body" style="background-color: white;">
+            <h5>Don't Make Me Think</h5>
+            <h6>By Steve krug</h6>
+            <div class="row px-3">
+                <div class="rating">4.5 &#9733;</div>
+                <div>(20)</div>
+            </div>
+            <div class="row px-3">
+                <div>Rs.1500</div>
+                <div class="px-3"><s>Rs.2000</s></div>
+            </div>
+            <hr>
+            <div>
+                <li>Book Details</li>
+                <p>Angular is a platform and framework for building single-page client applications using HTML and
+                    TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set
+                    of TypeScript libraries that you import into your apps.Angularjs is a front-end framework powered by
+                    JavaScript</p>
+            </div>
+            <hr>
+            <h5>
+                Customer Feedback
+            </h5>
+            <div class="feedback">
+                <h6 class="ml-4 pt-4">
+                    Overall Rating
+                </h6>
+                <div class="stars">
+                    <form action=""> <input class="star star-5" id="star-5" type="radio" name="star" /> <label
+                            class="star star-5" for="star-5"></label> <input class="star star-4" id="star-4"
+                            type="radio" name="star" /> <label class="star star-4" for="star-4"></label> <input
+                            class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3"
+                            for="star-3"></label> <input class="star star-2" id="star-2" type="radio" name="star" />
+                        <label class="star star-2" for="star-2"></label> <input class="star star-1" id="star-1"
+                            type="radio" name="star" /> <label class="star star-1" for="star-1"></label>
+                    </form>
+                </div>
+                <div class="input-group container pb-4" style="width: 97%;">
+                    <textarea class="form-control" aria-label="With textarea"
+                        placeholder="Write your review"></textarea>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary mr-4 mb-4" style="float: right;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,19 +14,20 @@
     </div>
 </div>
 
-<div class="container d-flex flex-wrap justify-content-around">
-    <div class="card m-4" style="width: 15rem;" *ngFor="let image of images">
-        <img [src]="image" class="card-img-top image">
+<div class="d-flex flex-wrap display justify-content-center">
+    <div class="card m-4" style="width: 15rem;" *ngFor="let book of books;let i=index;" (click)="bookDetails(book,images[i])">
+        <img [src]="images[i]" class="card-img-top image">
         <div class="card-body" style="background-color: white;">
-            <h5>Don't Make Me Think</h5>
-            <h6>By Steve krug</h6>
+            <h5>{{book.bookName}}</h5>
+            <h6>{{book.author}}</h6>
             <div class="row px-3">
-                <div class="rating">4.5 &#9733;</div>
+                <div class="rating mr-2">4.5 &#9733;</div>
                 <div>(20)</div>
             </div>
             <div class="row px-3">
-                <div>Rs.1500</div>
-                <div class="px-3"><s>Rs.2000</s></div>
+                <div *ngIf="book.price>book.discountPrice">Rs.{{book.price-book.discountPrice}}</div>
+                <div *ngIf="book.price<book.discountPrice">Rs.{{book.price}}</div>
+                <div class="px-3" *ngIf="book.price>book.discountPrice"><s>Rs.{{book.price}}</s></div>
             </div>
         </div>
     </div>

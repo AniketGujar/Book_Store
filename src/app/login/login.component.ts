@@ -53,6 +53,11 @@ export class LoginComponent implements OnInit {
   }  
 
   httpResponse=()=>{
-    console.log("Response ",this.result.message);
+    console.log("Response ",this.result.result);
+    if(this.result.result.accessToken){
+      localStorage.setItem('token',this.result.result.accessToken)
+      localStorage.setItem('email',this.loginForm.value.email)
+    }
+
   }
 }

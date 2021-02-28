@@ -13,4 +13,8 @@ export class HttpServiceService {
   postData=(url:String,data:any)=>{
     return this.http.post(this.BaseUrl+url,data);
   }
+
+  getData=(url:String)=>{
+    return this.http.get(this.BaseUrl+url)
+  }
 }

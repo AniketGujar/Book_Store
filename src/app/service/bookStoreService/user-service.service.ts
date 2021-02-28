@@ -14,6 +14,10 @@ export class UserServiceService {
   }
 
   register=(data:any)=>{
-    return this.httpService.postData('admin/registration',data)
+    return this.httpService.postData('admin/registration',data);
+  }
+
+  fetchBooks=()=>{
+    return this.httpService.getData('get/book');
   }
 }
