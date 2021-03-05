@@ -5,6 +5,8 @@ import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { OrdersComponent } from './orders/orders.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,9 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'book', component: BookComponent },
-      { path: 'cart', component: CartComponent}
+      { path: 'cart', component: CartComponent },
+      { path: 'order', component: OrdersComponent },
+      { path: 'wishlist', component: WishlistComponent }
     ]
   }
 ];

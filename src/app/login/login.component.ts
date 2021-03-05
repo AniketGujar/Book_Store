@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserServiceService} from '../service/bookStoreService/user-service.service'
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   flag = true;
   result:any;
 
-  constructor(private formBuilder: FormBuilder,private userService:UserServiceService) { }
+  constructor(private formBuilder: FormBuilder,private userService:UserServiceService, private router:Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -29,7 +30,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    console.log(this.loginForm.value.email)
     this.postLogin(this.loginForm.value)
   }
 
@@ -53,11 +53,10 @@ export class LoginComponent implements OnInit {
   }  
 
   httpResponse=()=>{
-    console.log("Response ",this.result.result);
     if(this.result.result.accessToken){
       localStorage.setItem('token',this.result.result.accessToken)
       localStorage.setItem('email',this.loginForm.value.email)
+      this.router.navigate(['/dashboard/home'])
     }
-
   }
 }

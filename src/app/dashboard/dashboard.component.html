@@ -8,14 +8,18 @@
       <span class="fa fa-search form-control-feedback"></span>
       <input type="text" class="form-control" placeholder="Search">
     </div>
-    <div class="d-flex justify-content-between">
-      <div class="col-1">
+    <div class="d-flex">
+      <div class="ml-4 mr-4">
         <i class="fa fa-user prof" routerLink=""></i>
-        <label routerLink="">Profile</label>
+        <div>
+          <label routerLink="">Profile</label>
+        </div>
       </div>
-      <div class="col-1">
-        <i class="fa fa-shopping-cart cart" routerLink="/dashboard/cart"></i>
-        <label routerLink="/dashboard/cart">Cart</label>
+      <div class="ml-4 mr-4">
+        <i class="fa fa-shopping-cart cart" routerLink="/dashboard/cart"><span class="badge bg-secondary">{{length}}</span></i>
+        <div>
+        <label routerLink="/dashboard/cart">Cart</label> 
+        </div>
       </div>
     </div>
   </div>
