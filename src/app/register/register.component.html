@@ -15,6 +15,12 @@
         <small for="exampleInputNumber1">Mobile Number</small>
         <input type="number" class="form-control" id="exampleInputNumber1" formControlName="mobileNumber">
     </div>
+    <div class="form-check ml-4">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="adminCheck()">
+        <label class="form-check-label" for="flexCheckChecked">
+            Login as Admin
+        </label>
+    </div>
     <div class="px-4">
         <button type="button" class="btn btn-danger login" style="width: 100%;" type="submit">Sign Up</button>
     </div>

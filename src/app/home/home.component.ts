@@ -9,14 +9,14 @@ import { UserServiceService } from '../service/bookStoreService/user-service.ser
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserServiceService, private router:Router) { }
+  constructor(private userService: UserServiceService, private router: Router) { }
   page = 4;
   books: any;
   data: any;
-  count: any;
+  count: any=0;
   cart: any;
   wish: any;
-  @Output() cartLength:Number=0;
+  @Output() cartLength: Number = 0;
 
   images = ["../../assets/images/Image 11@2x.png", "../../assets/images/Image 10@2x.png", "../../assets/images/Image 12.png",
     "../../assets/images/Image 13.png", "../../assets/images/Image 14.png", "../../assets/images/Image 18.png",
@@ -47,8 +47,8 @@ export class HomeComponent implements OnInit {
       console.log("cart  ", res)
       let result: any = res;
       this.cart = result.result;
-      this.cartLength =this.cart.length;
-      console.log(this.cartLength)
+      this.cartLength = this.cart.length;
+      console.log("cart length", this.cartLength)
       this.addWishCartlist();
     }),
       (err) => {
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
 
   bookDetails = (data: any, image: String) => {
     console.log(image, " ", data)
-    this.router.navigateByUrl('dashboard/book');
+    // this.router.navigateByUrl('dashboard/book');
   }
 
   addToCart = (id: String) => {
@@ -120,5 +120,20 @@ export class HomeComponent implements OnInit {
     }, (err) => {
       console.log(err)
     })
+  }
+
+  sortBy = (sortByIn: String) => {
+
+    if (sortByIn == "p") {
+      this.books.sort((a: any, b: any) => parseFloat(a.price) - parseFloat(b.price));
+    } else if (sortByIn == "a") {
+      this.books.sort((a: any, b: any) => {
+        return a.bookName.localeCompare(b.bookName);
+      });
+    } else {
+      this.books.sort((a: any, b: any) => {
+        return b.bookName.localeCompare(a.bookName);
+      });
+    }
   }
 }

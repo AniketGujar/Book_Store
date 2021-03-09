@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
 import { HttpServiceService } from '../httpService/http-service.service';
 
 @Injectable({
@@ -47,5 +46,17 @@ export class UserServiceService {
 
   deleteCartItem=(id:String)=>{
     return this.httpService.deleteWish('remove_cart_item/'+id, localStorage.getItem('token'));
+  }
+
+  postOrder=(data:any)=>{
+    return this.httpService.postUserOrder('add/order', localStorage.getItem('token'),data);
+  }
+
+  adminLogin=(data:any)=>{
+    return this.httpService.postData('admin/login',data);
+  }
+
+  adminRegister=(data:any)=>{
+    return this.httpService.postData('admin/registration',data);
   }
 }

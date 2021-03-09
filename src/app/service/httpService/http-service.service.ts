@@ -57,4 +57,14 @@ export class HttpServiceService {
     }
     return this.http.delete(this.BaseUrl+url,options)
   }
+
+  postUserOrder=(url:String,token:any,data:any)=>{
+    let options = {
+      headers: new HttpHeaders({
+        'x-access-token': token,
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.post(this.BaseUrl+url,data,options)
+  }
 }

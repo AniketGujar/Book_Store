@@ -1,6 +1,6 @@
-import { Component, OnInit ,OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
-import { Subscription} from 'rxjs'; 
+import { Subscription } from 'rxjs';
 import { DataService } from '../service/DataService/data.service';
 
 @Component({
@@ -8,28 +8,28 @@ import { DataService } from '../service/DataService/data.service';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent implements OnInit,OnDestroy {
+export class WishlistComponent implements OnInit, OnDestroy {
 
-  books:any;
-  subscription:any=Subscription;
+  books: any;
+  subscription: any = Subscription;
 
-  constructor(private userService:UserServiceService,private data: DataService) { }
+  constructor(private userService: UserServiceService, private data: DataService) { }
 
-  len:Number=0;
+  len: Number = 0;
 
   ngOnInit(): void {
-    this.subscription = this.data.changeMessage
     this.getWishlist();
   }
 
-  getWishlist=()=>{
-    this.userService.getWishList().subscribe((res)=>{
+  getWishlist = () => {
+    this.userService.getWishList().subscribe((res) => {
       console.log("wishlist ", res)
-      this.books=res;
-      this.books=this.books.result;
-      this.len=this.books.length;
+      this.data.changeMessage({"message":"new"})
+      this.books = res;
+      this.books = this.books.result;
+      this.len = this.books.length;
       console.log("wishlist res ", this.books)
-    },(err)=>{
+    }, (err) => {
       console.log(err)
     })
   }
@@ -38,12 +38,12 @@ export class WishlistComponent implements OnInit,OnDestroy {
     this.data.changeMessage(this.getWishlist())
   }
 
-  removeWishlistItem=(id:String)=>{
+  removeWishlistItem = (id: String) => {
     console.log(id)
-    this.userService.deleteWishList(id).subscribe((res)=>{
+    this.userService.deleteWishList(id).subscribe((res) => {
       console.log("wishlist delete ", res)
       this.getWishlist();
-    },(err)=>{
+    }, (err) => {
       console.log(err)
     })
   }

@@ -1,9 +1,34 @@
-.textAr{
-    width: 49%
+.textAr {
+    width: 49%;
 }
 
 @media screen and (max-width: 770px) {
-    .textAr{
-        width: 100%
+    .textAr {
+        width: 100%;
     }
-  }
+}
+
+.btn {
+    background-color: #3371b5;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn1{
+    border-radius: 50%;
+    border-color: grey;
+    width: 30px;
+    height: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inpt{
+    width: 30px;
+}

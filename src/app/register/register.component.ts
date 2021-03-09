@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   result:any;
   registerForm: any = FormBuilder;
   submitted = false;
+  checked=false;
+  
   constructor(private formBuilder: FormBuilder, private userService: UserServiceService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,9 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  adminCheck = () => {
+    this.checked = !this.checked;
+  }
   onSubmit = () => {
     if (this.registerForm.invalid) {
       return;

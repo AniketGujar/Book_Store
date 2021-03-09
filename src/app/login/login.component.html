@@ -15,16 +15,25 @@
                 <div *ngIf="flag">
                     <div class="form-group px-4">
                         <label for="exampleInputEmail1">Email Id</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            formControlName="email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
                     </div>
                     <div class="form-group px-4">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                            formControlName="password">
+                    </div>
+                    <div class="form-check ml-4">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (click)="adminCheck()">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Login as Admin
+                        </label>
                     </div>
                     <div class="px-4">
-                        <button type="button" class="btn btn-danger login" style="width: 100%;" type="submit"> Login</button>
+                        <button type="button" class="btn btn-danger login" style="width: 100%;" type="submit">
+                            Login</button>
                     </div>
                     <div class="separator px-4">OR</div>
                     <div class=" px-4">

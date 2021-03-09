@@ -7,9 +7,9 @@
         <div ngbDropdown class="d-inline-block" style="float: right;">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by relevance</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Price</button>
-                <button ngbDropdownItem>A-Z</button>
-                <button ngbDropdownItem>Z-A</button>
+                <button ngbDropdownItem (click)="sortBy('p')">Price</button>
+                <button ngbDropdownItem (click)="sortBy('a')">A-Z</button>
+                <button ngbDropdownItem (click)="sortBy('z')">Z-A</button>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
 <div class="d-flex flex-wrap display justify-content-center">
     <div class="card m-4" style="width: 15rem;" *ngFor="let book of books;let i=index;"
         (click)="bookDetails(book,images[i])">
-        <img [src]="images[i]" class="card-img-top image">
+        <img [src]="images[i]" class="card-img-top image" routerLink="/dashboard/book">
         <div class="card-body" style="background-color: white;padding-bottom: 0px;">
             <h5>{{book.bookName}}</h5>
             <h6>{{book.author}}</h6>
@@ -34,9 +34,9 @@
             <div class="row d-flex card-body justify-content-center">
                 <div>
                     <button type="button" class="btn add" *ngIf="!book.isAdded" (click)="addToCart(book._id)">ADD TO BAG</button>
-                    <button type="button" class="btn add" *ngIf="book.isAdded" >ADDED TO BAG</button>
+                    <button type="button" class="btn add" *ngIf="book.isAdded">ADDED TO BAG</button>
                 </div>
-                <button type="button" class="btn wish ml-1 col align-self-end" *ngIf="book.isAdded" (click)="removeFromCart(book.productId)">REMOVE</button>
+                <!-- <button type="button" class="btn wish ml-1 col align-self-end" *ngIf="book.isAdded" (click)="removeFromCart(book.productId)">REMOVE</button> -->
                 <button type="button" class="btn wish1 ml-1 col align-self-end" *ngIf="!book.isAdded" (click)="postWishlist(book._id)">&hearts; WISHLIST</button>
             </div>
         </div>

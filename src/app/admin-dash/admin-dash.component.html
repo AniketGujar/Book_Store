@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand navBar">
+    <div class="container-fluid align-items-center justify-content-around">
+      <div class="col-md-2 d-flex book">
+        <img src="../../assets/images/education.svg">
+        <a class="navbar-brand ml-2" routerLink="/admin/library">Bookstore</a>
+      </div>
+      <div class="form-group has-search col-md-4 search">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <div class="d-flex">
+        <div class="ml-4 mr-4">
+          <i class="fa fa-user prof"></i>
+          <div class="dropdown">
+            <label type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</label>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" routerLink=""><i class="fa fa-user mr-2"></i>Profile</a>
+              <a class="dropdown-item" ><i class="fa fa-shopping-bag mr-2"></i>My Orders</a>
+              <button class="dropdown-item btn" (click)="clearLocalStorage()" routerLink="/login">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+  
+  <div class="card footer col-12">
+    <div class="card-header">
+      Copyright &#169; 2021, Bookstore Private Limited. All Rights Reserved
+    </div>
+  </div>
