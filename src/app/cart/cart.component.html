@@ -16,38 +16,32 @@
                 <option value="3">Three</option>
             </select> -->
         </div>
-        <div class="d-flex" *ngFor="let book of cart;let i=index;">
+        <div class="d-flex mb-4" *ngFor="let book of cart;let i=index;">
             <div class="ml-5 mb-3">
-                <img src="../../assets/images/Image 10@2x.png" style="width: 100px;height: 150px;">
+                <img src="../../assets/images/Image 10@2x.png" style="width: 70px;height: 100px;">
             </div>
             <div class="pl-4" style="background-color: white;">
                 <h5>{{book.product_id.bookName}}</h5>
                 <h6>{{book.product_id.author}}</h6>
                 <div class="row px-3">
-                    <div class="rating">4.5 &#9733;</div>
-                    <div>(20)</div>
-                </div>
-                <div class="row px-3">
                     <div *ngIf="book.product_id.price>book.product_id.discountPrice">
                         Rs.{{book.product_id.price-book.product_id.discountPrice}}</div>
                     <div *ngIf="book.product_id.price<book.product_id.discountPrice">Rs.{{book.product_id.price}}</div>
-                    <div class="px-3" *ngIf="book.product_id.price>book.product_id.discountPrice">
+                    <small class="px-3 align-self-center" *ngIf="book.product_id.price>book.product_id.discountPrice">
                         <s>Rs.{{book.product_id.price}}</s>
-                    </div>
+                    </small>
                 </div>
-                <div class="mt-2">
+                <div class="mt-2 row px-3">
                     <Button (click)="minus(book)" class="btn1"><i class="fa fa-minus" aria-hidden="true"></i></Button>
                     <input type="number" class="ml-2 mr-2 inpt" value="{{book.quantityToBuy}}">
                     <Button (click)="plus(book)" class="btn1"><i class="fa fa-plus" aria-hidden="true"></i></Button>
+                    <h6 class="align-self-end ml-4" (click)="removeFromCart(book._id)">Remove</h6>
                 </div>
-            </div>
-            <div class="row align-items-center">
-                <i class="fa fa-trash" (click)="removeFromCart(book._id)"></i>
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-primary mr-4 mb-4" style="float: right;"
-                (click)="toggleShow()">Next</button>
+            <button type="button" class="btn btn-primary mr-4 mb-4 px-4" style="float: right; border-radius: 0px;"
+                (click)="toggleShow()">Place Oder</button>
         </div>
     </div>
     <ngb-accordion #acc="ngbAccordion" [activeIds]="show">
@@ -107,7 +101,7 @@
                                 <label class="form-check-label" for="inlineRadio3">Other</label>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary mb-4" style="float: right;"
+                        <button type="button" class="btn btn-primary mb-4 px-4" style="float: right; border-radius: 0px;"
                             (click)="toggleContinue()">Continue</button>
                     </div>
                 </form>
@@ -145,7 +139,7 @@
                         Final Amount = Rs.{{finalAmount}}
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary mb-4" style="float: right;"
+                        <button type="button" class="btn btn-primary mb-4 px-4" style="float: right; border-radius: 0px;"
                             (click)="placeOrder()">Place Order</button>
                     </div>
                 </ng-template>

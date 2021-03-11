@@ -40,7 +40,7 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

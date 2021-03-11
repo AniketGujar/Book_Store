@@ -11,10 +11,23 @@ export class DashboardComponent implements OnInit {
 
   public isMenuCollapsed = true;
 
-  ngOnInit() :void{
-  } 
+  store = true;
+  noToken = false;
+  ngOnInit(): void {
+    this.checkStorage();
+  }
 
-  clearLocalStorage=()=>{
+  clearLocalStorage = () => {
     localStorage.clear();
+    this.store = false;
+    this.noToken = true;
+  }
+
+  checkStorage = () => {
+    if (!localStorage.getItem('token')) {
+      console.log("Login Please")
+      this.store = false;
+      this.noToken = true;
+    }
   }
 }

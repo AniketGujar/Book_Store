@@ -59,4 +59,12 @@ export class UserServiceService {
   adminRegister=(data:any)=>{
     return this.httpService.postData('admin/registration',data);
   }
+
+  deleteItem=(id:String)=>{
+    return this.httpService.deleteWish('admin/delete/book/'+id, localStorage.getItem('token'));
+  }
+
+  updateBook=(id:String,data:any)=>{
+    return this.httpService.bookUpdate('admin/update/book/'+id, localStorage.getItem('token'),data);
+  }
 }

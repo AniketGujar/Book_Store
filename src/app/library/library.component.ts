@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-library',
@@ -8,11 +9,17 @@ import { UserServiceService } from '../service/bookStoreService/user-service.ser
 })
 export class LibraryComponent implements OnInit {
 
-  constructor(private userService:UserServiceService) { }
+  constructor(private userService: UserServiceService, private modalService: NgbModal) { }
 
   books: any;
   data: any;
-  count: any=0;
+  author:String="";
+  bookName:String="";
+  description:String="";
+  price:Number=0;
+  discount:Number=0;
+  quantity:Number=0;
+  id:String="";
 
   ngOnInit(): void {
     this.getBooks();
@@ -22,7 +29,6 @@ export class LibraryComponent implements OnInit {
     this.userService.fetchBooks().subscribe((res => {
       this.data = res;
       this.books = this.data.result;
-      this.count = this.books.length;
       console.log("Books ", this.books)
     }),
       (err) => {
@@ -31,7 +37,50 @@ export class LibraryComponent implements OnInit {
     )
   }
 
-  edit=(book:any)=>{
+  delete = (id: String) => {
+    this.userService.deleteItem(id).subscribe((res => {
+      this.data = res;
+      this.books = this.data.result;
+      this.getBooks();
+    }),
+      (err) => {
+        console.log("Error ", err)
+      }
+    )
+  }
 
+  openModal(targetModal: any, book: any) {
+    this.modalService.open(targetModal, {
+      centered: true,
+      backdrop: 'static'
+    });
+    this.author=book.author;
+    this.bookName=book.bookName;
+    this.description=book.description;
+    this.quantity=book.quantity;
+    this.price=book.price;
+    this.discount=book.discountPrice;
+    this.id=book._id
+  }
+
+  onSubmit() {
+    this.modalService.dismissAll();
+  }
+
+  update=()=>{
+    let updatedBook:any={
+      "bookName": this.bookName,
+      "author": this.author,
+      "description": this.description,
+      "quantity": this.quantity,
+      "price": this.price,
+      "discountPrice": this.id
+    }
+    
+    this.userService.updateBook(this.id,updatedBook).subscribe((res)=>{
+      console.log("Book Updated ",res)
+    }, (err)=>{
+      console.log("error", err)
+    })
   }
 }
