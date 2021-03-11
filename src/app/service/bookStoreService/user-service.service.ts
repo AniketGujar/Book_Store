@@ -67,4 +67,12 @@ export class UserServiceService {
   updateBook=(id:String,data:any)=>{
     return this.httpService.bookUpdate('admin/update/book/'+id, localStorage.getItem('token'),data);
   }
+
+  addBook=(data:any)=>{
+    return this.httpService.postUserOrder('admin/add/book', localStorage.getItem('token'),data);
+  }
+
+  orders=()=>{
+    return this.httpService.getDataHeader('admin/get/order', localStorage.getItem('token'));
+  }
 }

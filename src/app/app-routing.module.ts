@@ -4,6 +4,7 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GetOrdersComponent } from './get-orders/get-orders.component';
 import { HomeComponent } from './home/home.component';
 import { LibraryComponent } from './library/library.component';
 import { LoginComponent } from './login/login.component';
@@ -27,10 +28,11 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent }
     ]
   },
-  { 
-    path:'admin',component:AdminDashComponent,
-    children:[
-      { path:'library', component:LibraryComponent}
+  {
+    path: 'admin', component: AdminDashComponent,
+    children: [
+      { path: 'library', component: LibraryComponent },
+      { path: 'orders', component: GetOrdersComponent }
     ]
   }
 ];

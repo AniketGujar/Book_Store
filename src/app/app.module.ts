@@ -17,6 +17,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LibraryComponent } from './library/library.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { GetOrdersComponent } from './get-orders/get-orders.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
     WishlistComponent,
     ProfileComponent,
     LibraryComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    GetOrdersComponent
   ],
   imports: [
     BrowserModule,

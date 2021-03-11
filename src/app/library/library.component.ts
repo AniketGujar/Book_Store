@@ -13,13 +13,14 @@ export class LibraryComponent implements OnInit {
 
   books: any;
   data: any;
-  author:String="";
-  bookName:String="";
-  description:String="";
-  price:Number=0;
-  discount:Number=0;
-  quantity:Number=0;
-  id:String="";
+  author: String = "";
+  bookName: String = "";
+  description: String = "";
+  price: Number = 0;
+  discount: Number = 0;
+  quantity: Number = 0;
+  id: String = "";
+  add: boolean = false;
 
   ngOnInit(): void {
     this.getBooks();
@@ -50,36 +51,75 @@ export class LibraryComponent implements OnInit {
   }
 
   openModal(targetModal: any, book: any) {
+    this.add = false;
     this.modalService.open(targetModal, {
       centered: true,
       backdrop: 'static'
     });
-    this.author=book.author;
-    this.bookName=book.bookName;
-    this.description=book.description;
-    this.quantity=book.quantity;
-    this.price=book.price;
-    this.discount=book.discountPrice;
-    this.id=book._id
+    this.author = book.author;
+    this.bookName = book.bookName;
+    this.description = book.description;
+    this.quantity = book.quantity;
+    this.price = book.price;
+    this.discount = book.discountPrice;
+    this.id = book._id;
   }
 
   onSubmit() {
     this.modalService.dismissAll();
   }
 
-  update=()=>{
-    let updatedBook:any={
+  addBook = (targetModal: any) => {
+    this.add = true;
+    this.author = "";
+    this.bookName = "";
+    this.description = "";
+    this.quantity = 0;
+    this.price = 0;
+    this.discount = 0;
+    this.id = "";
+    this.modalService.open(targetModal, {
+      centered: true,
+      backdrop: 'static'
+    });
+  }
+
+  addNewBook = () => {
+    console.log("Add")
+    let newBook: any = {
       "bookName": this.bookName,
       "author": this.author,
       "description": this.description,
       "quantity": this.quantity,
       "price": this.price,
-      "discountPrice": this.id
+      "discountPrice": this.discount
     }
-    
-    this.userService.updateBook(this.id,updatedBook).subscribe((res)=>{
-      console.log("Book Updated ",res)
-    }, (err)=>{
+    this.userService.addBook(newBook).subscribe((res) => {
+      console.log("Book Added ", res)
+      this.getBooks();
+      this.modalService.dismissAll();
+    }, (err) => {
+      console.log("error", err)
+    })
+  }
+
+  update = () => {
+    console.log("update")
+    console.log(typeof (this.discount))
+    let updatedBook: any = {
+      "bookName": this.bookName,
+      "author": this.author,
+      "description": this.description,
+      "quantity": this.quantity,
+      "price": this.price,
+      "discountPrice": this.discount
+    }
+
+    this.userService.updateBook(this.id, updatedBook).subscribe((res) => {
+      console.log("Book Updated ", res)
+      this.getBooks();
+      this.modalService.dismissAll();
+    }, (err) => {
       console.log("error", err)
     })
   }

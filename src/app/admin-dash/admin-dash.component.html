@@ -14,8 +14,8 @@
           <div class="dropdown">
             <label type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</label>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" routerLink=""><i class="fa fa-user mr-2"></i>Profile</a>
-              <a class="dropdown-item" ><i class="fa fa-shopping-bag mr-2"></i>My Orders</a>
+              <a class="dropdown-item" ><i class="fa fa-user mr-2"></i>Profile</a>
+              <a class="dropdown-item" routerLink="/admin/orders"><i class="fa fa-shopping-bag mr-2"></i>Orders</a>
               <button class="dropdown-item btn" (click)="clearLocalStorage()" routerLink="/login">Logout</button>
             </div>
           </div>
