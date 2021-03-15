@@ -6,20 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  private wishlist = new BehaviorSubject({});
-  newWishlist = this.wishlist.asObservable();
-
-  private profile = new BehaviorSubject({});
-  profileData = this.profile.asObservable();
+  private cartCount = new BehaviorSubject<Number>(0);
+  currentCount = this.cartCount.asObservable();
 
   constructor() { }
 
-  changeMessage(books:any){
-    this.wishlist.next(books)
-    console.log(this.newWishlist)
-  }
-
-  changeProfile(user:any){
-    this.profile.next(user)
+  changeCount(count:any){
+    this.cartCount.next(count)
   }
 }
+  

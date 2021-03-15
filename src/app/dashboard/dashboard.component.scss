@@ -2,6 +2,9 @@
     background-color: #A03037;
     color: #FFFFFF;
     height: 60px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%; 
 }
 
 .navbar-brand{
@@ -13,7 +16,7 @@
 }
 
 .has-search .form-control-feedback {
-    position: absolute;
+    position: absolute; 
     z-index: 2;
     display: block;
     width: 2.375rem;
@@ -26,7 +29,7 @@
 
 @media screen and (max-width:470px) {
     .form-group{
-        visibility: hidden;
+        display: none;
     }
 }
 
@@ -70,8 +73,6 @@
     color: #FFFFFF;
     font-size: 12px;
     text-align: center;
-    // position:fixed;
-    // bottom:0;
 }
 
 .btn{

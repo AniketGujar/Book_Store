@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../service/DataService/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  count:any;
+
+  constructor(private data:DataService) { }
 
   public isMenuCollapsed = true;
 
@@ -15,6 +18,7 @@ export class DashboardComponent implements OnInit {
   noToken = false;
   ngOnInit(): void {
     this.checkStorage();
+    this.data.currentCount.subscribe(count=>this.count=count)
   }
 
   clearLocalStorage = () => {

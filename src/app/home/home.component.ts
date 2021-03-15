@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
+import { DataService } from '../service/DataService/data.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,15 @@ import { UserServiceService } from '../service/bookStoreService/user-service.ser
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserServiceService, private router: Router) { }
+  constructor(private userService: UserServiceService, private router: Router, private data: DataService) { }
   page = 4;
   books: any;
-  data: any;
-  count: any=0;
+  data1: any;
+  totalBooks: any = 0;
+  count: any;
   cart: any;
   wish: any;
-  @Output() cartLength: Number = 0;
+  sort:String="Sort By";
 
   images = ["../../assets/images/Image 11@2x.png", "../../assets/images/Image 10@2x.png", "../../assets/images/Image 12.png",
     "../../assets/images/Image 13.png", "../../assets/images/Image 14.png", "../../assets/images/Image 18.png",
@@ -29,9 +31,9 @@ export class HomeComponent implements OnInit {
 
   getBooks = () => {
     this.userService.fetchBooks().subscribe((res => {
-      this.data = res;
-      this.books = this.data.result;
-      this.count = this.books.length;
+      this.data1 = res;
+      this.books = this.data1.result;
+      this.totalBooks = this.books.length;
       console.log("Books ", this.books)
       this.cartItems();
       this.getWishlist();
@@ -47,9 +49,9 @@ export class HomeComponent implements OnInit {
       console.log("cart  ", res)
       let result: any = res;
       this.cart = result.result;
-      this.cartLength = this.cart.length;
-      console.log("cart length", this.cartLength)
+      this.count = this.cart.length;
       this.addWishCartlist();
+      this.changeCount();
     }),
       (err) => {
         console.log("Error ", err)
@@ -62,7 +64,6 @@ export class HomeComponent implements OnInit {
       console.log("wishlist ", res)
       this.wish = res;
       this.wish = this.wish.result;
-      console.log("wishlist res ", this.wish)
     }, (err) => {
       console.log(err)
     })
@@ -71,6 +72,10 @@ export class HomeComponent implements OnInit {
   bookDetails = (data: any, image: String) => {
     console.log(image, " ", data)
     // this.router.navigateByUrl('dashboard/book');
+  }
+
+  changeCount = () => {
+    this.data.changeCount(this.count)
   }
 
   addToCart = (id: String) => {
@@ -125,12 +130,19 @@ export class HomeComponent implements OnInit {
   sortBy = (sortByIn: String) => {
 
     if (sortByIn == "p") {
+      this.sort="Price(Low-High)";
       this.books.sort((a: any, b: any) => parseFloat(a.price) - parseFloat(b.price));
-    } else if (sortByIn == "a") {
+    } else if (sortByIn == "phl") {
+      this.sort="Price(High-Low)";
+      this.books.sort((a: any, b: any) => parseFloat(b.price) - parseFloat(a.price));
+    }
+    else if (sortByIn == "a") {
+      this.sort="A-Z";
       this.books.sort((a: any, b: any) => {
         return a.bookName.localeCompare(b.bookName);
       });
     } else {
+      this.sort="Z-A";
       this.books.sort((a: any, b: any) => {
         return b.bookName.localeCompare(a.bookName);
       });

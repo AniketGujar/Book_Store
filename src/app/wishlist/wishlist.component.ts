@@ -1,19 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
-import { Subscription } from 'rxjs';
-import { DataService } from '../service/DataService/data.service';
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent implements OnInit, OnDestroy {
+export class WishlistComponent implements OnInit {
 
   books: any;
-  subscription: any = Subscription;
 
-  constructor(private userService: UserServiceService, private data: DataService) { }
+  constructor(private userService: UserServiceService) { }
 
   len: Number = 0;
 
@@ -24,7 +21,6 @@ export class WishlistComponent implements OnInit, OnDestroy {
   getWishlist = () => {
     this.userService.getWishList().subscribe((res) => {
       console.log("wishlist ", res)
-      this.data.changeMessage({"message":"new"})
       this.books = res;
       this.books = this.books.result;
       this.len = this.books.length;
@@ -32,10 +28,6 @@ export class WishlistComponent implements OnInit, OnDestroy {
     }, (err) => {
       console.log(err)
     })
-  }
-
-  newWish() {
-    this.data.changeMessage(this.getWishlist())
   }
 
   removeWishlistItem = (id: String) => {
@@ -46,9 +38,5 @@ export class WishlistComponent implements OnInit, OnDestroy {
     }, (err) => {
       console.log(err)
     })
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

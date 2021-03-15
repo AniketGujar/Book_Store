@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
+import { DataService } from '../service/DataService/data.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import { UserServiceService } from '../service/bookStoreService/user-service.ser
 })
 export class CartComponent implements OnInit {
 
-  constructor(private userService: UserServiceService, private router:Router) { }
+  constructor(private userService: UserServiceService, private router:Router,private data:DataService) { }
 
   cart: any;
   len: any;
@@ -67,6 +68,7 @@ export class CartComponent implements OnInit {
       this.address = this.cart[0].user_id.address[0].fullAddress;
       this.city = this.cart[0].user_id.address[0].city;
       this.state = this.cart[0].user_id.address[0].state;
+      this.changeCount();
       this.cartValue();
       console.log("data ", this.cart[0])
     }),
@@ -87,6 +89,10 @@ export class CartComponent implements OnInit {
     }, (err) => {
       console.log(err)
     })
+  }
+
+  changeCount = () => {
+    this.data.changeCount(this.len)
   }
 
   toggleShow = () => {

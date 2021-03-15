@@ -1,21 +1,23 @@
-<div class="row top">
-    <div class="col row align-items-center">
-        <h3>Books</h3>
-        <h5> ({{count}} items)</h5>
-    </div>
-    <div class="col-9">
-        <div ngbDropdown class="d-inline-block" style="float: right;">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by relevance</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem (click)="sortBy('p')">Price</button>
-                <button ngbDropdownItem (click)="sortBy('a')">A-Z</button>
-                <button ngbDropdownItem (click)="sortBy('z')">Z-A</button>
+
+
+<div class="d-flex flex-wrap display justify-content-center">
+    <div class="row top container display justify-content-between">
+        <div class="row align-items-center">
+            <h3 class="pl-3">Books</h3>
+            <h5> ({{totalBooks}} items)</h5>
+        </div>
+        <div>
+            <div ngbDropdown class="d-inline-block" style="float: right;">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >{{sort}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sortBy('p')">Price(Low-High)</button>
+                    <button ngbDropdownItem (click)="sortBy('phl')">Price(High-Low)</button>
+                    <button ngbDropdownItem (click)="sortBy('a')">A-Z</button>
+                    <button ngbDropdownItem (click)="sortBy('z')">Z-A</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="d-flex flex-wrap display justify-content-center">
     <div class="card m-4" style="width: 15rem;" *ngFor="let book of books;let i=index;"
         (click)="bookDetails(book,images[i])">
         <img [src]="images[i]" class="card-img-top image" routerLink="/dashboard/book">
