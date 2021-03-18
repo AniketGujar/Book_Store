@@ -8,24 +8,24 @@
 <div class="row">
     <div class="container col-12 col-md-2 justify-content-end">
         <div class="card m-4" style="width: 16rem;">
-            <img src="../../assets/images/Image 11@2x.png" class="card-img-top image">
+            <img [src]="image" class="card-img-top image">
         </div>
         <div class="row d-flex card-body ml-2" style="width: 20rem;">
-            <button type="button" class="btn add mr-2">ADD TO BAG</button>
+            <button type="button" class="btn add mr-2" >ADD TO BAG</button>
             <button type="button" class="btn wish ml-2">&hearts; WISHLIST</button>
         </div>
     </div>
     <div class="container col-12 col-md-7 justify-content-start">
         <div class="card-body" style="background-color: white;">
-            <h5>Don't Make Me Think</h5>
-            <h6>By Steve krug</h6>
+            <h5>{{book.bookName}}</h5>
+            <h6>{{book.author}}</h6>
             <div class="row px-3">
                 <div class="rating">4.5 &#9733;</div>
                 <div>(20)</div>
             </div>
             <div class="row px-3">
-                <div>Rs.1500</div>
-                <div class="px-3"><s>Rs.2000</s></div>
+                <div>Rs.{{book.price-book.discountPrice}}</div>
+                <div class="px-3"><s>Rs.{{book.price}}</s></div>
             </div>
             <hr>
             <div>
@@ -44,7 +44,7 @@
                     Overall Rating
                 </h6>
                 <div class="stars">
-                    <form action=""> <input class="star star-5" id="star-5" type="radio" name="star" /> <label
+                    <form action=""> <input class="star star-5" id="star-5" type="radio" name="star" [(ngModel)]="rating5"/> <label
                             class="star star-5" for="star-5"></label> <input class="star star-4" id="star-4"
                             type="radio" name="star" /> <label class="star star-4" for="star-4"></label> <input
                             class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3"
@@ -55,11 +55,14 @@
                 </div>
                 <div class="input-group container pb-4" style="width: 97%;">
                     <textarea class="form-control" aria-label="With textarea"
-                        placeholder="Write your review"></textarea>
+                        placeholder="Write your review" [(ngModel)]="comment"></textarea>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-primary mr-4 mb-4" style="float: right;">Submit</button>
-                </div>
+                <button type="button" class="btn btn-primary mr-4 mb-4" style="float: right;" (click)="postFeedback()">Submit</button>
+            </div>
+            <div *ngFor="let feed of feedback" class="p-4" style="background-color: #F9F9F9; margin-top: 40px;">
+                <h6>{{feed.user_id.fullName}}</h6>
+                <label>Rating: {{feed.rating}}</label>
+                <p><em>{{feed.comment}}</em></p>
             </div>
         </div>
     </div>

@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LibraryComponent } from './library/library.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { GetOrdersComponent } from './get-orders/get-orders.component';
+import { SearchPipe } from './search/search.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GetOrdersComponent } from './get-orders/get-orders.component';
     ProfileComponent,
     LibraryComponent,
     AdminDashComponent,
-    GetOrdersComponent
+    GetOrdersComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { GetOrdersComponent } from './get-orders/get-orders.component';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

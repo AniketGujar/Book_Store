@@ -5,6 +5,7 @@
     overflow: hidden;
     position: fixed;
     width: 100%; 
+    z-index: 1;
 }
 
 .navbar-brand{
@@ -78,4 +79,9 @@
 .btn{
     border-color: #A03037;
     color: #A03037;
+}
+
+.dropdown{
+    position: fixed;
+    z-index:2;
 }

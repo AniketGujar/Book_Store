@@ -13,9 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private data:DataService) { }
 
   public isMenuCollapsed = true;
-
+  bookName:any;
   store = true;
   noToken = false;
+  cityN:boolean=false;
+  
   ngOnInit(): void {
     this.checkStorage();
     this.data.currentCount.subscribe(count=>this.count=count)
@@ -33,5 +35,10 @@ export class DashboardComponent implements OnInit {
       this.store = false;
       this.noToken = true;
     }
+  }
+
+  setSearch=(event:any)=>{
+    this.bookName=event.target.value
+    this.data.changeSearch(this.bookName)
   }
 }

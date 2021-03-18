@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
 import { DataService } from '../service/DataService/data.service';
+import { SearchPipe } from '../search/search.pipe';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +12,17 @@ import { DataService } from '../service/DataService/data.service';
 export class HomeComponent implements OnInit {
 
   constructor(private userService: UserServiceService, private router: Router, private data: DataService) { }
-  page = 4;
-  books: any;
+  page = 1;
+  pageSize=4;
+  books: any[]=[];
   data1: any;
   totalBooks: any = 0;
   count: any;
   cart: any;
   wish: any;
   sort:String="Sort By";
+  bookName:any;
+  cityN:boolean=false;
 
   images = ["../../assets/images/Image 11@2x.png", "../../assets/images/Image 10@2x.png", "../../assets/images/Image 12.png",
     "../../assets/images/Image 13.png", "../../assets/images/Image 14.png", "../../assets/images/Image 18.png",
@@ -27,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks();
+    this.data.currentsearch.subscribe(bookName=>this.bookName=bookName)
   }
 
   getBooks = () => {
@@ -69,13 +74,19 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  bookDetails = (data: any, image: String) => {
-    console.log(image, " ", data)
-    // this.router.navigateByUrl('dashboard/book');
+  bookDetails = (boook: any, image: String) => {
+    boook.images=image;
+    console.log(image, " ", boook)
+    this.sendBook(boook);
+    this.router.navigateByUrl('dashboard/book');
   }
 
   changeCount = () => {
     this.data.changeCount(this.count)
+  }
+
+  sendBook = (boook:any) => {
+    this.data.changeBook(boook)
   }
 
   addToCart = (id: String) => {

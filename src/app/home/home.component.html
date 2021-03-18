@@ -1,5 +1,3 @@
-
-
 <div class="d-flex flex-wrap display justify-content-center">
     <div class="row top container display justify-content-between">
         <div class="row align-items-center">
@@ -8,19 +6,18 @@
         </div>
         <div>
             <div ngbDropdown class="d-inline-block" style="float: right;">
-                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >{{sort}}</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{sort}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu">
                     <button ngbDropdownItem (click)="sortBy('p')">Price(Low-High)</button>
                     <button ngbDropdownItem (click)="sortBy('phl')">Price(High-Low)</button>
                     <button ngbDropdownItem (click)="sortBy('a')">A-Z</button>
                     <button ngbDropdownItem (click)="sortBy('z')">Z-A</button>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
-    <div class="card m-4" style="width: 15rem;" *ngFor="let book of books;let i=index;"
-        (click)="bookDetails(book,images[i])">
-        <img [src]="images[i]" class="card-img-top image" routerLink="/dashboard/book">
+    <div class="card m-4" style="width: 15rem;" *ngFor="let book of books | search: bookName | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;let i=index;">
+        <img [src]="images[i]" class="card-img-top image" routerLink="/dashboard/book" (click)="bookDetails(book,images[i])">
         <div class="card-body" style="background-color: white;padding-bottom: 0px;">
             <h5>{{book.bookName}}</h5>
             <h6>{{book.author}}</h6>
@@ -35,16 +32,24 @@
             </div>
             <div class="row d-flex card-body justify-content-center">
                 <div>
-                    <button type="button" class="btn add" *ngIf="!book.isAdded" (click)="addToCart(book._id)">ADD TO BAG</button>
-                    <button type="button" class="btn add" *ngIf="book.isAdded">ADDED TO BAG</button>
+                    <button type="button" class="btn add" *ngIf="!book.isAdded" (click)="addToCart(book._id)">ADD TO
+                        BAG</button>
+                    <button type="button" class="btn add" *ngIf="book.isAdded" style="width: 180px;">ADDED TO BAG</button>
                 </div>
                 <!-- <button type="button" class="btn wish ml-1 col align-self-end" *ngIf="book.isAdded" (click)="removeFromCart(book.productId)">REMOVE</button> -->
-                <button type="button" class="btn wish1 ml-1 col align-self-end" *ngIf="!book.isAdded" (click)="postWishlist(book._id)">&hearts; WISHLIST</button>
+                <button type="button" class="btn wish1 ml-1 col align-self-end" *ngIf="!book.isAdded"
+                    (click)="postWishlist(book._id)">&hearts; WISHLIST</button>
             </div>
         </div>
     </div>
 </div>
 
+<div *ngIf="cityN">
+    <div *ngFor="let book of books | search: bookName">
+      {{book}}
+    </div>
+  </div>
+
 <div class="row col-12 justify-content-center">
-    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination" class="page"></ngb-pagination>
+    <ngb-pagination [collectionSize]="totalBooks" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination" class="page"></ngb-pagination>
 </div>

@@ -75,4 +75,12 @@ export class UserServiceService {
   orders=()=>{
     return this.httpService.getDataHeader('admin/get/order', localStorage.getItem('token'));
   }
+
+  getFeedback=(id:String)=>{
+    return this.httpService.getDataHeader('get/feedback/'+id, localStorage.getItem('token'));
+  }
+
+  postFeedback=(id:String,data:any)=>{
+    return this.httpService.postUserOrder('add/feedback/'+id, localStorage.getItem('token'),data);
+  }
 }

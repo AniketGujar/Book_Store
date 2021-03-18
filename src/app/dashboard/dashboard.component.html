@@ -6,8 +6,9 @@
     </div>
     <div class="form-group has-search search">
       <span class="fa fa-search form-control-feedback"></span>
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)] = bookName (input)="setSearch($event)">
     </div>
+
     <div class="d-flex">
       <div class="ml-4 mr-4">
         <i class="fa fa-user prof"></i>
@@ -19,7 +20,7 @@
             <a class="dropdown-item" routerLink="/dashboard/wishlist"><i class="fa fa-heart mr-2"></i>Wishlist</a>
             <button class="dropdown-item btn" (click)="clearLocalStorage()" *ngIf="store">Logout</button>
             <button class="dropdown-item btn" routerLink='/login' *ngIf="noToken">Login</button>
-          </div>
+          </div>  
         </div>
       </div>
       <div class="ml-4 mr-4">
