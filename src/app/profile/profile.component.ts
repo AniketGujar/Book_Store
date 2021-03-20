@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   address: String = "";
   city: String = "";
   state: String = "";
-  type: String = "home";
+  type: String = "Home";
   email: any;
   editContact: boolean = true;
 
@@ -29,9 +29,9 @@ export class ProfileComponent implements OnInit {
     this.cartItems();
   }
 
-  onSubmit = () => {
+  putAddress = () => {
     let data = {
-      "addressType": "home",
+      "addressType": this.type,
       "fullAddress": this.address,
       "city": this.city,
       "state": this.state

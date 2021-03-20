@@ -6,7 +6,7 @@
 </nav>
 
 <div class="row">
-    <div class="container col-12 col-md-2 justify-content-end">
+    <div class="container col-12 col-md-2 justify-content-md-end">
         <div class="card m-4" style="width: 16rem;">
             <img [src]="image" class="card-img-top image">
         </div>
@@ -62,7 +62,7 @@
             <div *ngFor="let feed of feedback" class="p-4" style="background-color: #F9F9F9; margin-top: 40px;">
                 <h6>{{feed.user_id.fullName}}</h6>
                 <label>Rating: {{feed.rating}}</label>
-                <p><em>{{feed.comment}}</em></p>
+                <p style="margin-bottom: 0px;"><em>{{feed.comment}}</em></p>
             </div>
         </div>
     </div>

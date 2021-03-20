@@ -1,39 +1,41 @@
 <div class="container">
-  <button class="btn1 btn btn-primary mt-4" (click)="addBook(editProfileModal)"><i class="fa fa-plus" aria-hidden="true"></i>
+  <button class="btn1 btn btn-primary mt-4" (click)="addBook(editProfileModal)"><i class="fa fa-plus"
+      aria-hidden="true"></i>
     Add Book</button>
 </div>
 
-
-<table class="table container mt-4 mb-4">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Sr.No</th>
-      <th scope="col">Author</th>
-      <th scope="col">Book Name</th>
-      <th scope="col">Desciption</th>
-      <th scope="col">Price</th>
-      <th scope="col">Discount</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books;let i=index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{book.author}}</td>
-      <td>{{book.bookName}}</td>
-      <td>{{book.description}}</td>
-      <td>{{book.price}}</td>
-      <td>{{book.discountPrice}}</td>
-      <td>{{book.quantity}}</td>
-      <td>
-        <button type="button" class="btn btn-primary" (click)="openModal(editProfileModal, book)"><i
-            class="fa fa-edit"></i></button>
-      </td>
-      <td><button class="btn btn-primary" (click)="delete(book._id)"><i class="fa fa-trash"></i></button></td>
-    </tr>
-</table>
+<div style="overflow-x:auto;">
+  <table class="table container mt-4 mb-4">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Sr. No</th>
+        <th scope="col">Author</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Desciption</th>
+        <th scope="col">Price</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books;let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{book.author}}</td>
+        <td>{{book.bookName}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.price}}</td>
+        <td>{{book.discountPrice}}</td>
+        <td>{{book.quantity}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="openModal(editProfileModal, book)"><i
+              class="fa fa-edit"></i></button>
+        </td>
+        <td><button class="btn btn-primary" (click)="delete(book._id)"><i class="fa fa-trash"></i></button></td>
+      </tr>
+  </table>
+</div>
 
 <ng-template #editProfileModal let-modal>
   <div class="modal-header">

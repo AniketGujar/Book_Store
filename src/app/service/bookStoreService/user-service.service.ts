@@ -25,7 +25,7 @@ export class UserServiceService {
   }
 
   postAddress=(data:any)=>{
-    return this.httpService.postUserAdd('bookstore_user/edit_user',localStorage.getItem('token'),data);
+    return this.httpService.postUserAdd('edit_user',localStorage.getItem('token'),data);
   }
 
   getWishList=()=>{

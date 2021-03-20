@@ -41,7 +41,7 @@
         </div>
         <div>
             <button type="button" class="btn btn-primary mr-4 mb-4 px-4" style="float: right; border-radius: 0px;"
-                (click)="toggleShow()">Place Oder</button>
+                (click)="toggleShow()">Place Order</button>
         </div>
     </div>
     <ngb-accordion #acc="ngbAccordion" [activeIds]="show">
@@ -87,21 +87,21 @@
                         <div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                    [(ngModel)]="type" id="inlineRadio1" value="home">
+                                    [(ngModel)]="type" id="inlineRadio1" value="Home">
                                 <label class="form-check-label" for="inlineRadio1">Home</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                    [(ngModel)]="type" id="inlineRadio2" value="work">
+                                    [(ngModel)]="type" id="inlineRadio2" value="Work">
                                 <label class="form-check-label" for="inlineRadio2">Work</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                    [(ngModel)]="type" id="inlineRadio3" value="other">
+                                    [(ngModel)]="type" id="inlineRadio3" value="Other">
                                 <label class="form-check-label" for="inlineRadio3">Other</label>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary mb-4 px-4" style="float: right; border-radius: 0px;"
+                        <button type="button" class="btn btn-primary mb-4 px-4 mt-2" style="float: right; border-radius: 0px;"
                             (click)="toggleContinue()">Continue</button>
                     </div>
                 </form>
@@ -139,7 +139,7 @@
                         Final Amount = Rs.{{finalAmount}}
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary mb-4 px-4" style="float: right; border-radius: 0px;"
+                        <button type="button" class="btn btn-primary mb-4 px-4 mt-4" style="float: right; border-radius: 0px;"
                             (click)="placeOrder()">Place Order</button>
                     </div>
                 </ng-template>

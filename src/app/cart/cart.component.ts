@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   address: String = "";
   city: String = "";
   state: String = "";
-  type: String = "home";
+  type: String = "Home";
   price:Number=0;
   id:String="";
   quantity:Number=1;
@@ -70,7 +70,6 @@ export class CartComponent implements OnInit {
       this.state = this.cart[0].user_id.address[0].state;
       this.changeCount();
       this.cartValue();
-      console.log("data ", this.cart[0])
     }),
       (err) => {
         console.log("Error ", err)

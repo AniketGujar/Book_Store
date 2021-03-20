@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   flag = true;
   result: any;
   checked = false;
+  fieldTextType: boolean=false;
+
   constructor(private formBuilder: FormBuilder, private userService: UserServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class LoginComponent implements OnInit {
 
   login = () => {
     this.flag = true;
+  }
+
+  toggleFieldTextType=()=>{
+    this.fieldTextType = !this.fieldTextType;
   }
 
   signUp = () => {

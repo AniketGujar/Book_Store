@@ -12,7 +12,7 @@ export class WishlistComponent implements OnInit {
 
   constructor(private userService: UserServiceService) { }
 
-  len: Number = 0;
+  len: number = 0;
 
   ngOnInit(): void {
     this.getWishlist();
@@ -24,6 +24,7 @@ export class WishlistComponent implements OnInit {
       this.books = res;
       this.books = this.books.result;
       this.len = this.books.length;
+      this.nullValues();
       console.log("wishlist res ", this.books)
     }, (err) => {
       console.log(err)
@@ -38,5 +39,14 @@ export class WishlistComponent implements OnInit {
     }, (err) => {
       console.log(err)
     })
+  }
+
+  nullValues=()=>{
+    let x=this.len;
+    for(let i=0;i<x;i++){
+      if(this.books[i].product_id==null){
+        this.len--;
+      }
+    }
   }
 }

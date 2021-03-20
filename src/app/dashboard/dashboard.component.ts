@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../service/DataService/data.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   count:any;
 
-  constructor(private data:DataService) { }
+  constructor(private data:DataService, private router:Router) { }
 
   public isMenuCollapsed = true;
   bookName:any;
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.store = false;
     this.noToken = true;
+    this.router.navigate(['/login']);
   }
 
   checkStorage = () => {
