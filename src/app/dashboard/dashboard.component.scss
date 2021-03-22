@@ -32,16 +32,17 @@
 @media screen and (max-width: 470px) {
     .form-group {
         width: 30px;
+        z-index: 3;
     }
-    // .form-group:active .form-control {
-    //         width: 300px;
-    // }
-    // .form-group:active .book{
-    //     display: none;
-    // }
+    .form-control {
+        padding-right: 0rem;
+    }
+
+    .form-control:focus {
+        width: 180px;
+        height: 42px;
+    }
 }
-
-
 
 @media screen and (max-width: 400px) {
     .book {
@@ -93,4 +94,8 @@
 .dropdown {
     position: fixed;
     z-index: 2;
+}
+
+*[ng-reflect-router-link]:focus {
+    outline: none;
 }

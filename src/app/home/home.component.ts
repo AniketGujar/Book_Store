@@ -1,8 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../service/bookStoreService/user-service.service';
 import { DataService } from '../service/DataService/data.service';
-import { SearchPipe } from '../search/search.pipe';
 
 @Component({
   selector: 'app-home',

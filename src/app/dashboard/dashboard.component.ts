@@ -10,7 +10,7 @@ import { DataService } from '../service/DataService/data.service';
 export class DashboardComponent implements OnInit {
 
   count:any;
-
+  filled:boolean=false;
   constructor(private data:DataService, private router:Router) { }
 
   public isMenuCollapsed = true;

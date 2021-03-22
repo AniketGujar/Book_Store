@@ -17,8 +17,8 @@
             </select> -->
         </div>
         <div class="d-flex mb-4" *ngFor="let book of cart;let i=index;">
-            <div class="ml-5 mb-3">
-                <img src="../../assets/images/Image 10@2x.png" style="width: 70px;height: 100px;">
+            <div class="ml-5 mb-3 mr-4">
+                <img src="../../assets/images/Image 10@2x.png" style="width: 90px;height: 130px;">
             </div>
             <div class="pl-4" style="background-color: white;">
                 <h5>{{book.product_id.bookName}}</h5>
@@ -31,9 +31,9 @@
                         <s>Rs.{{book.product_id.price}}</s>
                     </small>
                 </div>
-                <div class="mt-2 row px-3">
+                <div class="mt-4 mb-2 row px-3">
                     <Button (click)="minus(book)" class="btn1"><i class="fa fa-minus" aria-hidden="true"></i></Button>
-                    <input type="number" class="ml-2 mr-2 inpt" value="{{book.quantityToBuy}}">
+                    <input type="number" class="ml-2 mr-2 inpt" value="{{book.quantityToBuy}}" style="text-align: center;">
                     <Button (click)="plus(book)" class="btn1"><i class="fa fa-plus" aria-hidden="true"></i></Button>
                     <h6 class="align-self-end ml-4" (click)="removeFromCart(book._id)">Remove</h6>
                 </div>
