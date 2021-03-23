@@ -1,0 +1,29 @@
+/* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';
+
+$bgcolor: #a03037;
+$textcolor: #ffffff;
+$footer:#2e1d1e;
+
+@mixin nav_bar {
+    background-color: $bgcolor;
+    color: $textcolor;
+    height: 60px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    padding-right: 0px;
+}
+
+@mixin search {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

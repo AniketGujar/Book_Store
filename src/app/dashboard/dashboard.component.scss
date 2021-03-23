@@ -1,16 +1,11 @@
+@import '../../styles/styles.scss';
+
 .navBar {
-    background-color: #a03037;
-    color: #ffffff;
-    height: 60px;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    padding-right: 0px;
+    @include nav_bar;
 }
 
 .navbar-brand {
-    color: #ffffff;
+    color: $textcolor;
 }
 
 .has-search .form-control {
@@ -18,15 +13,7 @@
 }
 
 .has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
+    @include search;
 }
 
 @media screen and (max-width: 470px) {
@@ -80,15 +67,15 @@
 }
 
 .footer {
-    background-color: #2e1d1e;
-    color: #ffffff;
+    background-color: $footer;
+    color: $textcolor;
     font-size: 12px;
     text-align: center;
 }
 
 .btn {
-    border-color: #a03037;
-    color: #a03037;
+    border-color: $bgcolor;
+    color:$bgcolor;
 }
 
 .dropdown {
