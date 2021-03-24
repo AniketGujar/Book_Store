@@ -19,6 +19,8 @@ import { LibraryComponent } from './library/library.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { GetOrdersComponent } from './get-orders/get-orders.component';
 import { SearchPipe } from './search/search.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { SearchPipe } from './search/search.pipe';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
